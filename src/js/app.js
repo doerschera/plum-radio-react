@@ -11,11 +11,20 @@ class App extends React.Component {
     }
   }
 
+  setMode() {
+    this.setState({
+      mode: 'gut'
+    })
+  }
+
   render() {
     return (
       <div>
         <Nav mode={this.state.mode}/>
-        <Home />
+        <Home
+          setMode={this.setMode.bind(this)}
+          mode={this.state.mode}
+        />
       </div>
     )
   }
