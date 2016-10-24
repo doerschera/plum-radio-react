@@ -7,13 +7,24 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mode: 'zen'
+      mode: 'zen',
+      time: null
     }
   }
 
   setMode() {
     this.setState({
       mode: 'gut'
+    })
+  }
+
+  timeButtonClick(event) {
+    console.log('click');
+    var time = event.target.innerHTML;
+    this.setState({
+      time: time
+    }, function() {
+      console.log(this.state);
     })
   }
 
@@ -24,6 +35,7 @@ class App extends React.Component {
         <Home
           setMode={this.setMode.bind(this)}
           mode={this.state.mode}
+          time={this.timeButtonClick.bind(this)}
         />
       </div>
     )

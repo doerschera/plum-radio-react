@@ -11,6 +11,7 @@ export default class Home extends React.Component {
         <ChooseMode
           setMode={this.props.setMode}
           mode={this.props.mode}
+          time={this.props.time}
         />
       </div>
     )

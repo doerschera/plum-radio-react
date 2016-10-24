@@ -1,14 +1,23 @@
 import React from 'react';
 
 export default class ChooseMode extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   showOptions() {
     return (
       <ul>
-        <li><button>5</button></li>
-        <li><button>10</button></li>
+        <li><button onClick={this.props.time}>5</button></li>
+        <li><button onClick={this.props.time}>10</button></li>
       </ul>
     )
   }
+
+  // handleButtonClick(event) {
+  //   event.preventDefault();
+  //   this.props.time
+  // }
 
   render() {
     console.log(this.props);
