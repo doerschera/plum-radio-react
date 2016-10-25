@@ -33,6 +33,18 @@ class App extends React.Component {
     })
   }
 
+  countDown() {
+    var count = this.state.count;
+    count--;
+    this.setState({count: count});
+  }
+
+  nextPoem() {
+    if(this.state.count == 0) {
+
+    }
+  }
+
   randomLines() {
     var index = Math.floor(Math.random()*poems.length);
     var usedLines = this.state.usedLines
@@ -84,7 +96,7 @@ class App extends React.Component {
       submit={this.submit.bind(this)}
       randomLines={this.randomLines.bind(this)}
       lines={this.state.line}
-      count={this.state.count}
+      countDown={this.countDown.bind(this)}
     />
 
     if(this.state.mode == 'zen mode') {

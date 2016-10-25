@@ -33,7 +33,6 @@ export default class Main extends React.Component {
   }
 
   componentWillMount() {
-    this.setCount()
     this.setTimer()
     this.props.randomLines()
   }
@@ -48,24 +47,29 @@ export default class Main extends React.Component {
     }
   }
 
-  setCount() {
-    this.setState({count: this.props.count});
-  }
-
   timeDown() {
-    var count = this.state.count;
     var time = this.state.time;
     time--;
     this.setState({time: time});
     if(time == 0) {
       clearInterval(this.timer)
-      count--;
-      this.setState({count: count});
+      this.countDown;
+      this.nextPoem();
+      this.setState({time: 10});
+      setInterval(this.timeDown, 1000);
     }
   }
 
+  nextPoem() {
+    this.props.randomLines()
+  }
+
+  countDown() {
+    this.props.countDown
+  }
+
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return (
       <div>
         <Lines lines={this.props.lines} />
