@@ -1,6 +1,7 @@
 import React from 'react';
 import Textarea from '../components/textarea.js';
-import Timer from '../components/timer.js'
+import Timer from '../components/timer.js';
+import Lines from '../components/lines.js';
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export default class Main extends React.Component {
   }
 
   renderTimer() {
-    if(this.state.time != undefined) {
+    if(this.state.time != null) {
       return <Timer time={this.state.time} />
     }
   }
@@ -32,15 +33,18 @@ export default class Main extends React.Component {
   }
 
   componentWillMount() {
-    this.props.setTimer()
+    this.setTimer()
+    this.props.randomLines()
   }
 
   componentDidMount() {
     this.timer = setInterval(this.timeDown, 1000)
   }
 
-  compnentWillUnmount() {
-    clearInterval(this.timer);
+  setTimer() {
+    if(this.props.count > 0) {
+      this.setState({time: 10})
+    }
   }
 
   timeDown() {
@@ -55,6 +59,7 @@ export default class Main extends React.Component {
   render() {
     return (
       <div>
+        <Lines lines={this.props.lines} />
         {this.renderTimer()}
         <div class='row'>
           <div class='col offset-s1'>

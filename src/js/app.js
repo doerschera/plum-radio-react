@@ -12,7 +12,8 @@ class App extends React.Component {
       mode: undefined,
       count: false,
       view: 'past lines',
-      time: undefined,
+      line: undefined,
+      usedLines: []
     }
   }
 
@@ -32,23 +33,26 @@ class App extends React.Component {
     })
   }
 
-  setTimer() {
-    if(this.state.count > 0) {
-      this.setState({time: 10})
-    }
-  }
-
-  timerDown() {
-    var time = this.state.time;
-    time--
-    this.setState({time: time})
-  }
-
   countDown() {
     if(this.state.time == 0) {
       var count = this.state.count;
       count--
       this.setState({count: count})
+    }
+  }
+
+  randomLines() {
+    var index = Math.floor(Math.random()*poems.length);
+    var usedLines = this.state.usedLines
+    if(usedLines.indexOf(index) == -1) {
+      var line = poems[index].lines
+      usedLines.push(line)
+      this.setState({
+        line: line,
+        usedLines: usedLines
+      })
+    } else {
+      this.randomLines();
     }
   }
 
@@ -86,8 +90,8 @@ class App extends React.Component {
       toggleTab={this.toggleTab.bind(this)}
       mode={this.state.mode}
       submit={this.submit.bind(this)}
-      time={this.state.time}
-      setTimer={this.setTimer.bind(this)}
+      randomLines={this.randomLines.bind(this)}
+      lines={this.state.line}
     />
 
     if(this.state.mode == 'zen mode') {
