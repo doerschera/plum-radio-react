@@ -4,7 +4,17 @@ import Button from '../components/button.js'
 
 export default class Main extends React.Component {
   submitButton() {
-    return <Button text='submit' />
+    return (
+      <div class='row'>
+        <div class='col offset-s10'>
+          <button onClick={this.props.submit}>Submit</button>
+        </div>
+      </div>
+    )
+  }
+
+  handleClick() {
+    console.log('click');
   }
 
   render() {
@@ -12,7 +22,9 @@ export default class Main extends React.Component {
     return (
       <div>
         <div class='row'>
-          <Button text={this.props.text} />
+          <div class='col offset-s1'>
+            <button onClick={this.props.toggleTab}>{this.props.text}</button>
+          </div>
         </div>
         <div class='row'>
           <Textarea />

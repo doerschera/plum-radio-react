@@ -42,6 +42,22 @@ class App extends React.Component {
     console.log('submit');
   }
 
+  renderMain() {
+    var main = <Main
+      text={this.state.view}
+      toggleTab={this.toggleTab.bind(this)}
+      mode={this.state.mode}
+      submit={this.submit.bind(this)}
+    />
+
+    if(this.state.mode == 'zen mode') {
+      return (main);
+
+    } else if(this.state.mode == 'gut mode' & this.state.time != null) {
+      return (main);
+    }
+  }
+
   render() {
     return (
       <div>
@@ -51,12 +67,7 @@ class App extends React.Component {
           setTime={this.setTime.bind(this)}
           mode={this.state.mode}
         />
-        <Main
-          text={this.state.view}
-          toggleTab={this.toggleTab.bind(this)}
-          mode={this.state.mode}
-          submit={this.submit.bind(this)}
-        />
+        {this.renderMain()}
       </div>
     )
   }
