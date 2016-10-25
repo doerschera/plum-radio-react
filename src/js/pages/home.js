@@ -10,8 +10,8 @@ export default class Home extends React.Component {
         <Intro />
         <ChooseMode
           setMode={this.props.setMode}
+          setTime={this.props.setTime}
           mode={this.props.mode}
-          time={this.props.time}
         />
       </div>
     )

@@ -7,24 +7,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mode: 'zen',
+      mode: undefined,
       time: null
     }
   }
 
-  setMode() {
+  setMode(event) {
+    var mode = event.target.innerHTML;
     this.setState({
-      mode: 'gut'
+      mode: mode
     })
   }
 
-  timeButtonClick(event) {
+  setTime(event) {
     console.log('click');
     var time = event.target.innerHTML;
     this.setState({
       time: time
-    }, function() {
-      console.log(this.state);
     })
   }
 
@@ -34,8 +33,8 @@ class App extends React.Component {
         <Nav mode={this.state.mode}/>
         <Home
           setMode={this.setMode.bind(this)}
+          setTime={this.setTime.bind(this)}
           mode={this.state.mode}
-          time={this.timeButtonClick.bind(this)}
         />
       </div>
     )
