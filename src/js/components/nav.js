@@ -3,7 +3,6 @@ import React from 'react';
 export default class Nav extends React.Component {
 
   render() {
-    console.log(this.props);
     var mode = this.props.mode == 'zen' ? 'zen' : 'gut';
     return(
       <div class='row'>
