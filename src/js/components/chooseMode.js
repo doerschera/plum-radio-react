@@ -21,7 +21,7 @@ export default class ChooseMode extends React.Component {
         <h3>To get started choose a mode: </h3>
         <a onClick={this.props.setMode}>gut mode</a>
           {this.props.mode == 'gut mode' ? this.showOptions() : null}
-        <a>zen mode</a>
+        <a onClick={this.props.setMode}>zen mode</a>
       </div>
     )
   }
