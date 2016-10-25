@@ -10,8 +10,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       mode: undefined,
-      time: null,
-      view: 'past lines'
+      count: false,
+      view: 'past lines',
+      timer: undefined,
     }
   }
 
@@ -23,12 +24,18 @@ class App extends React.Component {
     })
   }
 
-  setTime(event) {
+  setCount(event) {
     console.log('click');
-    var time = event.target.innerHTML;
+    var count = event.target.innerHTML;
     this.setState({
-      time: time
+      count: count
     })
+  }
+
+  setTimer() {
+    if(this.state.count > 0) {
+      this.setState({timer: 60});
+    }
   }
 
   toggleTab() {
@@ -43,16 +50,19 @@ class App extends React.Component {
   }
 
   renderHome() {
-    if(this.state.mode == undefined) {
-      return(
-        <Home
-          setMode={this.setMode.bind(this)}
-          setTime={this.setTime.bind(this)}
-          mode={this.state.mode}
-        />
-      )
+    var home = <Home
+      setMode={this.setMode.bind(this)}
+      setCount={this.setCount.bind(this)}
+      mode={this.state.mode}
+    />
 
+    if(this.state.mode == 'zen mode') {
       return null;
+
+    } else if(this.state.mode == 'gut mode' && this.state.count != 0) {
+      return null;
+    } else {
+      return (home)
     }
   }
 
@@ -62,12 +72,14 @@ class App extends React.Component {
       toggleTab={this.toggleTab.bind(this)}
       mode={this.state.mode}
       submit={this.submit.bind(this)}
+      time={this.state.timer}
+      setTimer={this.setTimer.bind(this)}
     />
 
     if(this.state.mode == 'zen mode') {
       return (main);
 
-    } else if(this.state.mode == 'gut mode' & this.state.time != null) {
+    } else if(this.state.mode == 'gut mode' && this.state.count != 0) {
       return (main);
     }
   }

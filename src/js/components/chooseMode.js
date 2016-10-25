@@ -8,8 +8,8 @@ export default class ChooseMode extends React.Component {
   showOptions() {
     return (
       <ul>
-        <li><button onClick={this.props.setTime}>5</button></li>
-        <li><button onClick={this.props.setTime}>10</button></li>
+        <li><button onClick={this.props.setCount}>5</button></li>
+        <li><button onClick={this.props.setCount}>10</button></li>
       </ul>
     )
   }
