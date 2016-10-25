@@ -7,7 +7,7 @@ export default class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: 10
+      time: 10,
     }
     this.timeDown = this.timeDown.bind(this)
   }
@@ -33,6 +33,7 @@ export default class Main extends React.Component {
   }
 
   componentWillMount() {
+    this.setCount()
     this.setTimer()
     this.props.randomLines()
   }
@@ -47,16 +48,24 @@ export default class Main extends React.Component {
     }
   }
 
+  setCount() {
+    this.setState({count: this.props.count});
+  }
+
   timeDown() {
+    var count = this.state.count;
     var time = this.state.time;
     time--;
     this.setState({time: time});
     if(time == 0) {
       clearInterval(this.timer)
+      count--;
+      this.setState({count: count});
     }
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <Lines lines={this.props.lines} />
