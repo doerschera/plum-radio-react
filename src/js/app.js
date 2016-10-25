@@ -34,16 +34,22 @@ class App extends React.Component {
 
   setTimer() {
     if(this.state.count > 0) {
-      this.setState({time: 60})
+      this.setState({time: 10})
     }
   }
 
-  countDown() {
-    var time = this.state.time
+  timerDown() {
+    var time = this.state.time;
     time--
-    this.setState({time: time}, function(){
-      console.log(this.state.time)
-    })
+    this.setState({time: time})
+  }
+
+  countDown() {
+    if(this.state.time == 0) {
+      var count = this.state.count;
+      count--
+      this.setState({count: count})
+    }
   }
 
   toggleTab() {
@@ -82,7 +88,6 @@ class App extends React.Component {
       submit={this.submit.bind(this)}
       time={this.state.time}
       setTimer={this.setTimer.bind(this)}
-      countDown={this.countDown.bind(this)}
     />
 
     if(this.state.mode == 'zen mode') {
@@ -90,6 +95,8 @@ class App extends React.Component {
 
     } else if(this.state.mode == 'gut mode' && this.state.count != 0) {
       return (main);
+    } else {
+      return null;
     }
   }
 

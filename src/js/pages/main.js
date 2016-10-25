@@ -3,10 +3,17 @@ import Textarea from '../components/textarea.js';
 import Timer from '../components/timer.js'
 
 export default class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      time: 10
+    }
+    this.timeDown = this.timeDown.bind(this)
+  }
 
   renderTimer() {
-    if(this.props.time != undefined) {
-      return <Timer time={this.props.time} />
+    if(this.state.time != undefined) {
+      return <Timer time={this.state.time} />
     }
   }
 
@@ -29,8 +36,20 @@ export default class Main extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
-    this.timer = setInterval(this.props.countDown, 1000);
+    this.timer = setInterval(this.timeDown, 1000)
+  }
+
+  compnentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  timeDown() {
+    var time = this.state.time;
+    time--;
+    this.setState({time: time});
+    if(time == 0) {
+      clearInterval(this.timer)
+    }
   }
 
   render() {
