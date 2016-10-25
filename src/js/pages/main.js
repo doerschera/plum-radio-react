@@ -3,6 +3,7 @@ import Textarea from '../components/textarea.js';
 import Timer from '../components/timer.js'
 
 export default class Main extends React.Component {
+
   renderTimer() {
     if(this.props.time != undefined) {
       return <Timer time={this.props.time} />
@@ -27,8 +28,12 @@ export default class Main extends React.Component {
     this.props.setTimer()
   }
 
-  render() {
+  componentDidMount() {
     console.log(this.props);
+    this.timer = setInterval(this.props.countDown, 1000);
+  }
+
+  render() {
     return (
       <div>
         {this.renderTimer()}

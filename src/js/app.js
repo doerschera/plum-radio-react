@@ -12,7 +12,7 @@ class App extends React.Component {
       mode: undefined,
       count: false,
       view: 'past lines',
-      timer: undefined,
+      time: undefined,
     }
   }
 
@@ -34,8 +34,16 @@ class App extends React.Component {
 
   setTimer() {
     if(this.state.count > 0) {
-      this.setState({timer: 60});
+      this.setState({time: 60})
     }
+  }
+
+  countDown() {
+    var time = this.state.time
+    time--
+    this.setState({time: time}, function(){
+      console.log(this.state.time)
+    })
   }
 
   toggleTab() {
@@ -72,8 +80,9 @@ class App extends React.Component {
       toggleTab={this.toggleTab.bind(this)}
       mode={this.state.mode}
       submit={this.submit.bind(this)}
-      time={this.state.timer}
+      time={this.state.time}
       setTimer={this.setTimer.bind(this)}
+      countDown={this.countDown.bind(this)}
     />
 
     if(this.state.mode == 'zen mode') {
