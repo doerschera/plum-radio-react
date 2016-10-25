@@ -42,6 +42,20 @@ class App extends React.Component {
     console.log('submit');
   }
 
+  renderHome() {
+    if(this.state.mode == undefined) {
+      return(
+        <Home
+          setMode={this.setMode.bind(this)}
+          setTime={this.setTime.bind(this)}
+          mode={this.state.mode}
+        />
+      )
+
+      return null;
+    }
+  }
+
   renderMain() {
     var main = <Main
       text={this.state.view}
@@ -62,11 +76,7 @@ class App extends React.Component {
     return (
       <div>
         <Nav mode={this.state.mode}/>
-        <Home
-          setMode={this.setMode.bind(this)}
-          setTime={this.setTime.bind(this)}
-          mode={this.state.mode}
-        />
+        {this.renderHome()}
         {this.renderMain()}
       </div>
     )
