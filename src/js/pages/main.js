@@ -1,7 +1,8 @@
 import React from 'react';
 import Textarea from '../components/textarea.js';
 import Timer from '../components/timer.js';
-import Lines from '../components/lines.js';
+import GutContainer from '../components/gutLinesContainer.js';
+import Lines from '../components/lines.js'
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class Main extends React.Component {
   }
 
   renderTimer() {
-    if(this.state.time != null) {
+    if(this.props.mode == 'gut mode') {
       return <Timer time={this.state.time} />
     }
   }
@@ -35,10 +36,6 @@ export default class Main extends React.Component {
   componentWillMount() {
     this.setTimer()
     this.props.randomLines()
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer);
   }
 
   setTimer() {
@@ -66,12 +63,23 @@ export default class Main extends React.Component {
     this.props.countDown();
   }
 
+  renderLines() {
+
+    if(this.props.mode == 'gut mode') {
+      return (
+        <GutContainer lines={this.props.lines}
+          timeDown={this.timeDown.bind(this)}
+        />
+      );
+    } else if(this.props.mode == 'zen mode') {
+      return <Lines lines={this.props.lines} />;
+    }
+  }
+
   render() {
     return (
       <div>
-        <Lines lines={this.props.lines} timeDown={this.timeDown.bind(this)}
-        count={this.props.count}
-        />
+        {this.renderLines()}
         {this.renderTimer()}
         <div class='row'>
           <div class='col offset-s1'>
