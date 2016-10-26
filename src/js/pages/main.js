@@ -37,8 +37,8 @@ export default class Main extends React.Component {
     this.props.randomLines()
   }
 
-  componentDidMount() {
-    // this.timer = setInterval(this.timeDown, 1000)
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   setTimer() {
@@ -56,6 +56,9 @@ export default class Main extends React.Component {
       this.nextPoem();
       this.setState({time: 10});
     }
+    if(this.props.count == 0) {
+      return false;
+    }
   }
 
   nextPoem() {
@@ -67,7 +70,7 @@ export default class Main extends React.Component {
     return (
       <div>
         <Lines lines={this.props.lines} timeDown={this.timeDown.bind(this)}
-        countDown={this.props.countDown}
+        count={this.props.count}
         />
         {this.renderTimer()}
         <div class='row'>

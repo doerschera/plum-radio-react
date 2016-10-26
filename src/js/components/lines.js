@@ -7,6 +7,10 @@ export default class Lines extends React.Component {
     this.timer = setInterval(this.props.timeDown, 1000)
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   render() {
     const lines = this.props.lines.map((line, i) =>
       <h4 key={i}>{line}</h4>

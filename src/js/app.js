@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Nav from './components/nav.js';
 import Home from './pages/home.js';
 import Main from './pages/main.js';
+import GutEnd from './pages/gutEnd.js';
 import poems from './components/poems.js';
 
 class App extends React.Component {
@@ -38,6 +39,9 @@ class App extends React.Component {
     var count = this.state.count;
     count--;
     this.setState({count: count});
+    if(this.state.count==0) {
+      this.setState({mode: 'gut end'})
+    }
   }
 
   randomLines() {
@@ -75,10 +79,11 @@ class App extends React.Component {
 
     if(this.state.mode == 'zen mode') {
       return null;
-
     } else if(this.state.mode == 'gut mode' && this.state.count != 0) {
       return null;
-    } else {
+    } else if(this.state.mode == 'gut end') {
+      return null;
+    }else {
       return (home)
     }
   }
@@ -92,6 +97,7 @@ class App extends React.Component {
       randomLines={this.randomLines.bind(this)}
       lines={this.state.line}
       countDown={this.countDown.bind(this)}
+      count={this.state.count}
     />
 
     if(this.state.mode == 'zen mode') {
@@ -104,6 +110,12 @@ class App extends React.Component {
     }
   }
 
+  renderGutEnd() {
+    if(this.state.mode == 'gut end') {
+      return <GutEnd />
+    }
+  }
+
   render() {
     console.log(this.state);
     return (
@@ -111,6 +123,7 @@ class App extends React.Component {
         <Nav mode={this.state.mode}/>
         {this.renderHome()}
         {this.renderMain()}
+        {this.renderGutEnd()}
       </div>
     )
   }
