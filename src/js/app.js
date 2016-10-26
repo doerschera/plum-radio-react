@@ -66,7 +66,12 @@ class App extends React.Component {
   }
 
   savePastLines() {
-
+    var text = document.getElementById('input').value
+    var pastLines = this.state.pastLines;
+    pastLines.push(text);
+    this.setState({pastLines: pastLines}, function() {
+      console.log(this.state);
+    })
   }
 
   toggleTab() {
@@ -77,12 +82,9 @@ class App extends React.Component {
   }
 
   submit() {
-    var text = document.getElementById('input').value
-    var pastLines = this.state.pastLines;
-    pastLines.push(text);
-    this.setState({pastLines: pastLines}, function() {
-      console.log(this.state);
-    })
+    this.savePastLines()
+    this.randomLines()
+    document.getElementById('input').value='';
   }
 
   renderHome() {
