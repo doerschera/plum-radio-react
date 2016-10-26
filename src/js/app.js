@@ -102,6 +102,16 @@ class App extends React.Component {
     this.setState({inputValue: ''});
   }
 
+  restartGutMode() {
+    this.setState({
+      mode: 'gut mode',
+      count: 5,
+      view: 'past lines',
+      inputValue: ''
+    });
+    this.randomLines();
+  }
+
   // renders home component when no mode is active
   renderHome() {
     var home = <Home
@@ -151,7 +161,12 @@ class App extends React.Component {
   // renders once gut mode count reaches zero
   renderGutEnd() {
     if(this.state.mode == 'gut end') {
-      return <GutEnd pastLines={this.state.pastLines}/>
+      return (
+        <GutEnd
+          pastLines={this.state.pastLines}
+          restart={this.restartGutMode.bind(this)}
+        />
+      )
     }
   }
 

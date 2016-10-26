@@ -4,7 +4,7 @@ export default class Textarea extends React.Component {
 
   render() {
     return (
-      <div class='form-group col s10 offset-s1'>
+      <div class='form-group col s8 offset-s2'>
         <textarea
           id='input'
           rows='15'
