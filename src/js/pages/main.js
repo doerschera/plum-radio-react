@@ -1,5 +1,6 @@
 import React from 'react';
 import Textarea from '../components/textarea.js';
+import PastLines from '../components/pastLines.js';
 import Timer from '../components/timer.js';
 import GutContainer from '../components/gutLinesContainer.js';
 import Lines from '../components/lines.js'
@@ -81,7 +82,23 @@ export default class Main extends React.Component {
     }
   }
 
+  renderTextArea() {
+    if(this.props.text == 'past lines') {
+      return (
+        <Textarea
+          inputValue={this.props.inputValue}
+          inputOnChange={this.props.inputOnChange}
+        />
+      )
+    } else {
+      return(
+        <PastLines pastLines={this.props.pastLines}/>
+      )
+    }
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div>
         {this.renderLines()}
@@ -92,10 +109,7 @@ export default class Main extends React.Component {
           </div>
         </div>
         <div class='row'>
-          <Textarea
-            inputValue={this.props.inputValue}
-            inputOnChange={this.props.inputOnChange}
-          />
+          {this.renderTextArea()}
         </div>
         <div class='row'>
           {this.props.mode=='zen mode' ? this.renderSubmitButton() : null}

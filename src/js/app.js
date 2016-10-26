@@ -43,7 +43,10 @@ class App extends React.Component {
     console.log('count down');
     var count = this.state.count;
     count--;
-    this.setState({count: count});
+    this.setState({
+      count: count,
+      inputValue: ''
+    });
     if(this.state.count==0) {
       this.setState({mode: 'gut end'})
     }
@@ -129,7 +132,8 @@ class App extends React.Component {
       lines={this.state.line}
       countDown={this.countDown.bind(this)}
       count={this.state.count}
-      savesPastLines={this.savePastLines.bind(this)}
+      savePastLines={this.savePastLines.bind(this)}
+      pastLines={this.state.pastLines}
       inputValue={this.state.inputValue}
       inputOnChange={this.inputOnChange.bind(this)}
     />
@@ -152,7 +156,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <Nav mode={this.state.mode}/>
