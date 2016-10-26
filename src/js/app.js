@@ -14,7 +14,8 @@ class App extends React.Component {
       count: false,
       view: 'past lines',
       line: undefined,
-      usedLines: []
+      usedLines: [],
+      pastLines: []
     }
   }
 
@@ -47,6 +48,11 @@ class App extends React.Component {
   randomLines() {
     var index = Math.floor(Math.random()*poems.length);
     var usedLines = this.state.usedLines
+
+    if(usedLines.length == poems.length) {
+      this.setState({usedLines: []});
+    }
+
     if(usedLines.indexOf(index) == -1) {
       var line = poems[index].lines
       usedLines.push(line)
@@ -59,6 +65,10 @@ class App extends React.Component {
     }
   }
 
+  savePastLines() {
+
+  }
+
   toggleTab() {
     var text = this.state.view == 'past lines' ? 'back' : 'past lines';
     this.setState({
@@ -67,7 +77,12 @@ class App extends React.Component {
   }
 
   submit() {
-    console.log('submit');
+    var text = document.getElementById('input').value
+    var pastLines = this.state.pastLines;
+    pastLines.push(text);
+    this.setState({pastLines: pastLines}, function() {
+      console.log(this.state);
+    })
   }
 
   renderHome() {
