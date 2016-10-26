@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Nav from './components/nav.js';
 import Home from './pages/home.js';
 import Main from './pages/main.js';
+import GutEnd from './pages/gutEnd.js';
 import poems from './components/poems.js';
 
 class App extends React.Component {
@@ -12,7 +13,8 @@ class App extends React.Component {
       mode: undefined,
       count: false,
       view: 'past lines',
-      time: undefined,
+      line: undefined,
+      usedLines: []
     }
   }
 
@@ -32,23 +34,28 @@ class App extends React.Component {
     })
   }
 
-  setTimer() {
-    if(this.state.count > 0) {
-      this.setState({time: 10})
+  countDown() {
+    console.log('count down');
+    var count = this.state.count;
+    count--;
+    this.setState({count: count});
+    if(this.state.count==0) {
+      this.setState({mode: 'gut end'})
     }
   }
 
-  timerDown() {
-    var time = this.state.time;
-    time--
-    this.setState({time: time})
-  }
-
-  countDown() {
-    if(this.state.time == 0) {
-      var count = this.state.count;
-      count--
-      this.setState({count: count})
+  randomLines() {
+    var index = Math.floor(Math.random()*poems.length);
+    var usedLines = this.state.usedLines
+    if(usedLines.indexOf(index) == -1) {
+      var line = poems[index].lines
+      usedLines.push(line)
+      this.setState({
+        line: line,
+        usedLines: usedLines
+      })
+    } else {
+      this.randomLines();
     }
   }
 
@@ -72,10 +79,11 @@ class App extends React.Component {
 
     if(this.state.mode == 'zen mode') {
       return null;
-
     } else if(this.state.mode == 'gut mode' && this.state.count != 0) {
       return null;
-    } else {
+    } else if(this.state.mode == 'gut end') {
+      return null;
+    }else {
       return (home)
     }
   }
@@ -86,8 +94,10 @@ class App extends React.Component {
       toggleTab={this.toggleTab.bind(this)}
       mode={this.state.mode}
       submit={this.submit.bind(this)}
-      time={this.state.time}
-      setTimer={this.setTimer.bind(this)}
+      randomLines={this.randomLines.bind(this)}
+      lines={this.state.line}
+      countDown={this.countDown.bind(this)}
+      count={this.state.count}
     />
 
     if(this.state.mode == 'zen mode') {
@@ -100,12 +110,20 @@ class App extends React.Component {
     }
   }
 
+  renderGutEnd() {
+    if(this.state.mode == 'gut end') {
+      return <GutEnd />
+    }
+  }
+
   render() {
+    console.log(this.state);
     return (
       <div>
         <Nav mode={this.state.mode}/>
         {this.renderHome()}
         {this.renderMain()}
+        {this.renderGutEnd()}
       </div>
     )
   }

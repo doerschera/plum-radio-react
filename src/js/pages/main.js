@@ -1,18 +1,19 @@
 import React from 'react';
 import Textarea from '../components/textarea.js';
-import Timer from '../components/timer.js'
+import Timer from '../components/timer.js';
+import Lines from '../components/lines.js';
 
 export default class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: 10
+      time: 10,
     }
     this.timeDown = this.timeDown.bind(this)
   }
 
   renderTimer() {
-    if(this.state.time != undefined) {
+    if(this.state.time != null) {
       return <Timer time={this.state.time} />
     }
   }
@@ -32,15 +33,18 @@ export default class Main extends React.Component {
   }
 
   componentWillMount() {
-    this.props.setTimer()
+    this.setTimer()
+    this.props.randomLines()
   }
 
-  componentDidMount() {
-    this.timer = setInterval(this.timeDown, 1000)
-  }
-
-  compnentWillUnmount() {
+  componentWillUnmount() {
     clearInterval(this.timer);
+  }
+
+  setTimer() {
+    if(this.props.count > 0) {
+      this.setState({time: 10})
+    }
   }
 
   timeDown() {
@@ -48,13 +52,26 @@ export default class Main extends React.Component {
     time--;
     this.setState({time: time});
     if(time == 0) {
-      clearInterval(this.timer)
+      clearInterval(this.timer);
+      this.nextPoem();
+      this.setState({time: 10});
     }
+    if(this.props.count == 0) {
+      return false;
+    }
+  }
+
+  nextPoem() {
+    this.props.randomLines();
+    this.props.countDown();
   }
 
   render() {
     return (
       <div>
+        <Lines lines={this.props.lines} timeDown={this.timeDown.bind(this)}
+        count={this.props.count}
+        />
         {this.renderTimer()}
         <div class='row'>
           <div class='col offset-s1'>
