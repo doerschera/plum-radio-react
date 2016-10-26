@@ -151,7 +151,7 @@ class App extends React.Component {
   // renders once gut mode count reaches zero
   renderGutEnd() {
     if(this.state.mode == 'gut end') {
-      return <GutEnd />
+      return <GutEnd pastLines={this.state.pastLines}/>
     }
   }
 
