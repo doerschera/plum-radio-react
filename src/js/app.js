@@ -31,7 +31,6 @@ class App extends React.Component {
 
   // if gut mode set count to either 5 or 10
   setCount(event) {
-    console.log('click');
     var count = event.target.innerHTML;
     this.setState({
       count: count
@@ -61,7 +60,7 @@ class App extends React.Component {
       this.setState({usedLines: []});
     }
 
-    if(usedLines.indexOf(index) == -1) {
+    if(usedLines.indexOf(poems[index]) == -1) {
       var line = poems[index].lines
       usedLines.push(line)
       this.setState({
@@ -110,6 +109,18 @@ class App extends React.Component {
       inputValue: ''
     });
     this.randomLines();
+  }
+
+  changeMode() {
+    var mode = document.getElementById('mode').innerHTML;
+    console.log(mode);
+    this.setState({
+      mode: mode
+    })
+    if(mode == 'gut mode') {
+      this.setState({count: 5});
+    }
+    this.randomLines()
   }
 
   // renders home component when no mode is active
@@ -171,9 +182,13 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
-        <Nav mode={this.state.mode}/>
+        <Nav
+          mode={this.state.mode}
+          changeMode={this.changeMode.bind(this)}
+        />
         {this.renderHome()}
         {this.renderMain()}
         {this.renderGutEnd()}
