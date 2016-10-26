@@ -188,6 +188,7 @@ class App extends React.Component {
         <Nav
           mode={this.state.mode}
           changeMode={this.changeMode.bind(this)}
+          setMode={this.setMode.bind(this)}
         />
         {this.renderHome()}
         {this.renderMain()}

@@ -12,7 +12,7 @@ export default class Nav extends React.Component {
           <ul class='col s6'>
             <li><a id='mode' onClick={this.props.changeMode} href='#'>{mode}</a></li>
             <li><a href='#'>poets + poems</a></li>
-            <li><a href='#'>about</a></li>
+            <li><a onClick={this.props.setMode} href='#'>about</a></li>
           </ul>
         </div>
       </div>
