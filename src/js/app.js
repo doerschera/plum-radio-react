@@ -15,10 +15,12 @@ class App extends React.Component {
       view: 'past lines',
       line: undefined,
       usedLines: [],
-      pastLines: []
+      pastLines: [],
+      inputValue: ''
     }
   }
 
+  // set mode to gut or zen
   setMode(event) {
     var mode = event.target.innerHTML;
     console.log(mode);
@@ -27,6 +29,7 @@ class App extends React.Component {
     })
   }
 
+  // if gut mode set count to either 5 or 10
   setCount(event) {
     console.log('click');
     var count = event.target.innerHTML;
@@ -35,6 +38,7 @@ class App extends React.Component {
     })
   }
 
+  // decrement count when timer reaches zero
   countDown() {
     console.log('count down');
     var count = this.state.count;
@@ -45,6 +49,7 @@ class App extends React.Component {
     }
   }
 
+  // pull random lines from poems array
   randomLines() {
     var index = Math.floor(Math.random()*poems.length);
     var usedLines = this.state.usedLines
@@ -65,15 +70,21 @@ class App extends React.Component {
     }
   }
 
-  savePastLines() {
-    var text = document.getElementById('input').value
-    var pastLines = this.state.pastLines;
-    pastLines.push(text);
-    this.setState({pastLines: pastLines}, function() {
-      console.log(this.state);
-    })
+  // tracks changes to textarea
+  inputOnChange() {
+    var value = document.getElementById('input').value;
+    this.setState({inputValue: value})
   }
 
+  // save users text to state in array
+  savePastLines() {
+    var text = this.state.inputValue;
+    var pastLines = this.state.pastLines;
+    pastLines.push(text);
+    this.setState({pastLines: pastLines})
+  }
+
+  // toggle between past line view and textarea
   toggleTab() {
     var text = this.state.view == 'past lines' ? 'back' : 'past lines';
     this.setState({
@@ -81,12 +92,14 @@ class App extends React.Component {
     })
   }
 
+  // handles submit event, saves user text, repopulates lines, clears textarea
   submit() {
     this.savePastLines()
     this.randomLines()
-    document.getElementById('input').value='';
+    this.setState({inputValue: ''});
   }
 
+  // renders home component when no mode is active
   renderHome() {
     var home = <Home
       setMode={this.setMode.bind(this)}
@@ -105,6 +118,7 @@ class App extends React.Component {
     }
   }
 
+  // renders main when gut or zen mode is active
   renderMain() {
     var main = <Main
       text={this.state.view}
@@ -115,6 +129,9 @@ class App extends React.Component {
       lines={this.state.line}
       countDown={this.countDown.bind(this)}
       count={this.state.count}
+      savesPastLines={this.savePastLines.bind(this)}
+      inputValue={this.state.inputValue}
+      inputOnChange={this.inputOnChange.bind(this)}
     />
 
     if(this.state.mode == 'zen mode') {
@@ -127,6 +144,7 @@ class App extends React.Component {
     }
   }
 
+  // renders once gut mode count reaches zero
   renderGutEnd() {
     if(this.state.mode == 'gut end') {
       return <GutEnd />

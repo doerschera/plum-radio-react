@@ -13,12 +13,50 @@ export default class Main extends React.Component {
     this.timeDown = this.timeDown.bind(this)
   }
 
+  // sets timer to 60 and generates random lines
+  componentWillMount() {
+    this.setTimer()
+    this.props.randomLines()
+  }
+
+  handleClick() {
+    console.log('click');
+  }
+
+  // sets timer to state
+  setTimer() {
+    if(this.props.count > 0) {
+      this.setState({time: 10})
+    }
+  }
+
+  // decrements timer and clears interval, saves text at zero
+  timeDown() {
+    var time = this.state.time;
+    time--;
+    this.setState({time: time});
+    if(time == 0) {
+      clearInterval(this.timer);
+      this.nextPoem();
+      this.setState({time: 10});
+    }
+  }
+
+  // generates new lines when timer reaches zero
+  nextPoem() {
+    this.props.savePastLines();
+    this.props.randomLines();
+    this.props.countDown();
+  }
+
+  // renders timer if gut mode is active
   renderTimer() {
     if(this.props.mode == 'gut mode') {
       return <Timer time={this.state.time} />
     }
   }
 
+  // renders submit button is zen mode is active
   renderSubmitButton() {
     return (
       <div class='row'>
@@ -29,40 +67,7 @@ export default class Main extends React.Component {
     )
   }
 
-  handleClick() {
-    console.log('click');
-  }
-
-  componentWillMount() {
-    this.setTimer()
-    this.props.randomLines()
-  }
-
-  setTimer() {
-    if(this.props.count > 0) {
-      this.setState({time: 10})
-    }
-  }
-
-  timeDown() {
-    var time = this.state.time;
-    time--;
-    this.setState({time: time});
-    if(time == 0) {
-      clearInterval(this.timer);
-      this.nextPoem();
-      this.setState({time: 10});
-    }
-    if(this.props.count == 0) {
-      return false;
-    }
-  }
-
-  nextPoem() {
-    this.props.randomLines();
-    this.props.countDown();
-  }
-
+  // if gut mode renders lines with setInterval in willMount
   renderLines() {
 
     if(this.props.mode == 'gut mode') {
@@ -87,7 +92,10 @@ export default class Main extends React.Component {
           </div>
         </div>
         <div class='row'>
-          <Textarea />
+          <Textarea
+            inputValue={this.props.inputValue}
+            inputOnChange={this.props.inputOnChange}
+          />
         </div>
         <div class='row'>
           {this.props.mode=='zen mode' ? this.renderSubmitButton() : null}
