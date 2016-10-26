@@ -34,15 +34,10 @@ class App extends React.Component {
   }
 
   countDown() {
+    console.log('count down');
     var count = this.state.count;
     count--;
     this.setState({count: count});
-  }
-
-  nextPoem() {
-    if(this.state.count == 0) {
-
-    }
   }
 
   randomLines() {
@@ -110,6 +105,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <Nav mode={this.state.mode}/>

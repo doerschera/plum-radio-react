@@ -38,7 +38,7 @@ export default class Main extends React.Component {
   }
 
   componentDidMount() {
-    this.timer = setInterval(this.timeDown, 1000)
+    // this.timer = setInterval(this.timeDown, 1000)
   }
 
   setTimer() {
@@ -52,27 +52,23 @@ export default class Main extends React.Component {
     time--;
     this.setState({time: time});
     if(time == 0) {
-      clearInterval(this.timer)
-      this.countDown;
+      clearInterval(this.timer);
       this.nextPoem();
       this.setState({time: 10});
-      setInterval(this.timeDown, 1000);
     }
   }
 
   nextPoem() {
-    this.props.randomLines()
-  }
-
-  countDown() {
-    this.props.countDown
+    this.props.randomLines();
+    this.props.countDown();
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
-        <Lines lines={this.props.lines} />
+        <Lines lines={this.props.lines} timeDown={this.timeDown.bind(this)}
+        countDown={this.props.countDown}
+        />
         {this.renderTimer()}
         <div class='row'>
           <div class='col offset-s1'>
