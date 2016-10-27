@@ -7,7 +7,7 @@ export default class ChooseMode extends React.Component {
 
   showOptions() {
     return (
-      <ul class='white-box' id='options'>
+      <ul class='white-box no-padding' id='options'>
         <li>how long?</li>
         <li><button class='circleButton' onClick={this.props.setCount}>5</button></li>
         <li><button class='circleButton' onClick={this.props.setCount}>10</button></li>

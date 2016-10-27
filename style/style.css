@@ -20,6 +20,9 @@ a, a:hover, a:visited {
   padding: 10px;
   display: inline-block; }
 
+.no-padding {
+  padding: 0; }
+
 .title {
   font-family: "Bungee Hairline", "Helvetice Neue", sans-serif;
   font-weight: bold;
@@ -35,8 +38,8 @@ a, a:hover, a:visited {
 .nav {
   background-color: white;
   margin-bottom: 75px;
-  border-top: solid 2px #330033;
-  border-bottom: solid 2px #330033; }
+  border-top: solid 1px #330033;
+  border-bottom: solid 1px #330033; }
   .nav ul {
     float: right;
     text-align: right;
@@ -45,10 +48,18 @@ a, a:hover, a:visited {
 #mode {
   display: table-cell; }
 
-#options {
-  padding: 0; }
-  #options li {
-    margin-right: 20px; }
+#options li {
+  margin-right: 20px; }
+
+.button {
+  background-color: #330033;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  padding: 2px 6px 3px 6px; }
+  .button:focus {
+    background-color: #330033; }
 
 .circleButton {
   text-align: center;
@@ -61,5 +72,39 @@ a, a:hover, a:visited {
   height: 23px; }
   .circleButton:hover {
     text-decoration: underline; }
+
+.tab {
+  margin-bottom: 0; }
+  .tab button {
+    width: 100px; }
+
+.content-area {
+  background-color: white;
+  height: 300px;
+  padding: 10px;
+  overflow: auto; }
+  .content-area:focus {
+    outline: none; }
+  .content-area p {
+    margin-top: 0; }
+
+#timer {
+  background-color: #330033;
+  color: white;
+  text-align: center;
+  padding: 2px 6px 3px 6px;
+  height: 21px;
+  width: 26px;
+  display: inline-block;
+  box-sizing: content-box; }
+
+.citations {
+  background: white;
+  display: inline-block;
+  font-size: 12px;
+  padding: 5px; }
+
+.citations-list {
+  min-height: 90px; }
 
 /*# sourceMappingURL=style.css.map */
