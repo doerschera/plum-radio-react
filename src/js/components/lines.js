@@ -5,7 +5,7 @@ export default class Lines extends React.Component {
 
   render() {
     const lines = this.props.lines.map((line, i) =>
-      <h4 key={i}>{line}</h4>
+      <h4 key={i} class='white-box lines'>{line}</h4>
     );
     return (
       <div class='row'>

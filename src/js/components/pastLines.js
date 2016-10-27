@@ -6,7 +6,7 @@ export default class PastLines extends React.Component {
     const pastLines = this.props.pastLines.map((lines, i) => <p key={i}>{lines}</p>);
 
     return(
-      <div class='col s10 offset-s1'>
+      <div class='content-area col s8 offset-s2'>
         <div>
           {pastLines}
         </div>

@@ -1,0 +1,94 @@
+@import 'https://fonts.googleapis.com/css?family=Bungee+Hairline|Cutive+Mono';
+@import "Helpers/variables.scss";
+
+body {
+  background-image: url('images/radio.jpg');
+  background-size: 1800px auto;
+  font-family: $monospace;
+  color: $purple;
+}
+
+li {
+  display: inline;
+  margin-right: 20px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+a, a:hover, a:visited {
+  color: $purple;
+  text-decoration: underline;
+}
+
+.white-box {
+  background-color: white;
+  padding: 10px;
+  display: inline-block;
+}
+
+.title {
+  font-family: $title;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 30px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+.lines {
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.nav {
+  background-color: white;
+  margin-bottom: 75px;
+  border-top: $purple-border;
+  border-bottom: $purple-border;
+  ul {
+    float: right;
+    text-align: right;
+    margin-top: 25px;
+  }
+}
+
+#mode {
+  display: table-cell;
+}
+
+#options {
+  padding: 0;
+  li {
+    margin-right: 20px;
+  }
+}
+
+.button {
+  background-color: $purple;
+  color: white;
+  border: $purple-border;
+}
+
+.circleButton {
+  text-align: center;
+  border-radius: 100%;
+  border: solid 1px $purple;
+  background-color: white;
+  font-size: 12px;
+  padding: 3px;
+  width: 23px;
+  height: 23px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.tab {
+  margin-bottom: 0;
+}
+
+.content-area {
+  background-color: white;
+  height: 300px;
+}

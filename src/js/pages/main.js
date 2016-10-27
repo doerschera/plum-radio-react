@@ -62,7 +62,7 @@ export default class Main extends React.Component {
     return (
       <div class='row'>
         <div class='col offset-s10'>
-          <button onClick={this.props.submit}>Submit</button>
+          <button class='button' onClick={this.props.submit}>Submit</button>
         </div>
       </div>
     )
@@ -103,9 +103,9 @@ export default class Main extends React.Component {
       <div>
         {this.renderLines()}
         {this.renderTimer()}
-        <div class='row'>
-          <div class='col offset-s1'>
-            <button onClick={this.props.toggleTab}>{this.props.text}</button>
+        <div class='tab row'>
+          <div class='col offset-s2'>
+            <button class='button' onClick={this.props.toggleTab}>{this.props.text}</button>
           </div>
         </div>
         <div class='row'>
