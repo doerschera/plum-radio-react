@@ -8,6 +8,11 @@ body {
   color: $purple;
 }
 
+body, .wrapper {
+  height: 100%;
+  min-height: 100vh;
+}
+
 li {
   display: inline;
   margin-right: 20px;
@@ -16,9 +21,14 @@ li {
   }
 }
 
-a, a:hover, a:visited {
+a {
   color: $purple;
-  text-decoration: underline;
+  text-decoration: none;
+  &:hover, :visited {
+    color: $purple;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 
 .white-box {
@@ -55,6 +65,13 @@ a, a:hover, a:visited {
     text-align: right;
     margin-top: 25px;
   }
+  // a {
+  //   text-decoration: none;
+  //   &:hover {
+  //     cursor: pointer;
+  //     text-decoration: underline;
+  //   }
+  // }
 }
 
 #mode {
@@ -88,6 +105,7 @@ a, a:hover, a:visited {
   padding: 3px;
   width: 23px;
   height: 23px;
+  cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
@@ -134,4 +152,14 @@ a, a:hover, a:visited {
 
 .citations-list {
   min-height: 90px;
+}
+
+footer {
+  width: 100%;
+  p {
+    color: white;
+    font-size: 10px;
+    float: right;
+    margin: 0;
+  }
 }

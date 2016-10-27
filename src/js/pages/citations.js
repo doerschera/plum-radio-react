@@ -12,7 +12,7 @@ export default class Citations extends React.Component {
           <li class='citations'>{obj.poet}</li>
         </div>
         <div>
-          <li class='citations'>{obj.book}</li>
+          <li class='citations'><em>{obj.book}</em></li>
         </div>
         <div>
           <li class='citations'>{obj.publisher}</li>

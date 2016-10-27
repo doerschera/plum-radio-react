@@ -5,15 +5,23 @@ body {
   font-family: "Cutive Mono", monospace;
   color: #330033; }
 
+body, .wrapper {
+  height: 100%;
+  min-height: 100vh; }
+
 li {
   display: inline;
   margin-right: 20px; }
   li:last-child {
     margin-right: 0; }
 
-a, a:hover, a:visited {
+a {
   color: #330033;
-  text-decoration: underline; }
+  text-decoration: none; }
+  a:hover, a :visited {
+    color: #330033;
+    text-decoration: underline;
+    cursor: pointer; }
 
 .white-box {
   background-color: white;
@@ -69,7 +77,8 @@ a, a:hover, a:visited {
   font-size: 12px;
   padding: 3px;
   width: 23px;
-  height: 23px; }
+  height: 23px;
+  cursor: pointer; }
   .circleButton:hover {
     text-decoration: underline; }
 
@@ -102,9 +111,18 @@ a, a:hover, a:visited {
   background: white;
   display: inline-block;
   font-size: 12px;
-  padding: 5px; }
+  padding: 5px;
+  margin: 2px 0; }
 
 .citations-list {
   min-height: 90px; }
+
+footer {
+  width: 100%; }
+  footer p {
+    color: white;
+    font-size: 10px;
+    float: right;
+    margin: 0; }
 
 /*# sourceMappingURL=style.css.map */
