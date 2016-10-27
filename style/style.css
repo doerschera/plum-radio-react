@@ -39,6 +39,9 @@ a {
   margin-bottom: 10px;
   margin-top: 15px; }
 
+#home-title {
+  display: table-cell; }
+
 .lines {
   font-size: 24px;
   line-height: 24px; }
@@ -81,6 +84,8 @@ a {
   cursor: pointer; }
   .circleButton:hover {
     text-decoration: underline; }
+  .circleButton:focus {
+    background-color: white; }
 
 .tab {
   margin-bottom: 0; }
@@ -96,6 +101,10 @@ a {
     outline: none; }
   .content-area p {
     margin-top: 0; }
+
+#timer-wrapper {
+  position: absolute;
+  right: 17.8%; }
 
 #timer {
   background-color: #330033;
