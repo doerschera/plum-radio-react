@@ -26,14 +26,14 @@ module.exports = [
     poem: "Wake",
     book: "Subject",
     publisher: "U. of California Press, 2005",
-    lines: ["wake: outside the frame beyond his 'fit'", "wake: frothed a blankness in the passage of what", "wake: we waited &nbsp&nbsp(and silence)"]
+    lines: ["wake: outside the frame beyond his 'fit'", "wake: frothed a blankness in the passage of what", "wake: we waited \xa0\xa0\xa0\xa0(and silence)"]
   },
   {
     poet: "Richard Siken",
     poem: "Straw House, Straw Dog",
     book: "Crush",
     publisher: "Yale University, 2005",
-    lines: ["But thanks, thanks for calling it &nbsp&nbsp&nbsp <em> the blue sky</em>"]
+    lines: ["But thanks, thanks for calling it \xa0\xa0\xa0\xa0 'the blue sky'"]
   },
   {
     poet: "Jim Carroll",
@@ -65,17 +65,17 @@ module.exports = [
   },
   {
     poet: "James Poteat",
-    poem: "the &nbsp&nbsp&nbsp interference",
+    poem: "the \xa0\xa0\xa0interference",
     book: "Illustrating the Machine that Makes the World",
     publisher: "U. of Georgia Press, 2009",
-    lines: ["&nbsp&nbsp think of", "&nbsp&nbsp&nbsp briars", "riding &nbsp&nbsp&nbsp the skin"]
+    lines: ["\xa0\xa0\xa0\xa0\xa0 think of", "\xa0\xa0\xa0\xa0\xa0\xa0\xa0 briars", "riding\xa0\xa0\xa0 the skin"]
   },
   {
     poet: "Lauren Ireland",
     poem: "I Should Have Killed You in that Field",
     book: "The Arrow",
     publisher: "Coconut Books, 2014",
-    lines: ["Narcissus or burning plastic. &nbsp&nbsp&nbsp Wrong Day.", "Wrong light.&nbsp&nbsp&nbsp Winter scabs the grass.", "Tight grosgrain path&nbsp&nbsp&nbsp around & around"]
+    lines: ["Narcissus or burning plastic. \xa0\xa0\xa0\xa0 Wrong Day.", "Wrong light. \xa0\xa0\xa0\xa0 Winter scabs the grass.", "Tight grosgrain path \xa0\xa0\xa0\xa0 around & around"]
   },
   {
     poet: "Piero Heliczer",
@@ -96,7 +96,7 @@ module.exports = [
     poem: "n/a",
     book: "Nox",
     publisher: "New Directions Books, 2010",
-    lines: ["<em>I fall, you fall, I have fallen, fell, a neutral verb, whence casual and casually</em>"]
+    lines: ["I fall, you fall, I have fallen, fell, a neutral verb, whence casual and casually"]
   }, {
     poet: "Diane Wakoski",
     poem: "Sixteen of Cups",
