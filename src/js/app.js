@@ -196,16 +196,23 @@ class App extends React.Component {
     console.log(this.state);
     return (
       <div>
-        <Nav
-          mode={this.state.mode}
-          changeMode={this.changeMode.bind(this)}
-          setMode={this.setMode.bind(this)}
-          viewCitations={this.viewCitations.bind(this)}
-        />
-        {this.renderHome()}
-        {this.renderMain()}
-        {this.renderGutEnd()}
-        {this.renderCitations()}
+        <div class='wrapper'>
+          <Nav
+            mode={this.state.mode}
+            changeMode={this.changeMode.bind(this)}
+            setMode={this.setMode.bind(this)}
+            viewCitations={this.viewCitations.bind(this)}
+          />
+          {this.renderHome()}
+          {this.renderMain()}
+          {this.renderGutEnd()}
+          {this.renderCitations()}
+        </div>
+        <div>
+          <footer>
+            <p> copyright 2016 Aly Doerscher / background image copyright Hitdelight</p>
+          </footer>
+        </div>
       </div>
     )
   }
