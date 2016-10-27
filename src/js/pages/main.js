@@ -9,7 +9,7 @@ export default class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: 10,
+      time: 60,
     }
     this.timeDown = this.timeDown.bind(this)
   }
@@ -27,7 +27,7 @@ export default class Main extends React.Component {
   // sets timer to state
   setTimer() {
     if(this.props.count > 0) {
-      this.setState({time: 10})
+      this.setState({time: 60})
     }
   }
 
@@ -39,7 +39,7 @@ export default class Main extends React.Component {
     if(time == 0) {
       clearInterval(this.timer);
       this.nextPoem();
-      this.setState({time: 10});
+      this.setState({time: 60});
     }
   }
 
